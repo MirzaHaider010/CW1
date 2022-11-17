@@ -46,7 +46,21 @@
   <h1 class="make-center">CHECKOUT</h1>
   <br/>
 
-  
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <p>Name: <input v-model="name" /></p>
+      </div>
+      <div class="col-sm-4">
+        <p>Phone:<input v-model="phone"  /></p>
+      </div>
+      <div class="col-sm-4">
+        <button v-on:click="checkout(name, phone)" class="cart__button">
+            Checkout
+        </button>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col text-center">
@@ -55,8 +69,6 @@
     </div>
   </div>
 </template>
-
-
 
 <script>
   import { computed } from "vue";
@@ -80,10 +92,8 @@
       }
 
       function checkout(name, phone) {
-
         var phonePattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/
         var namePattern = /^[A-Za-z ]+$/
-
         if(this.total == 0){
           alert("The cart is empty")
         }
@@ -189,6 +199,4 @@ html {
 .cart-back:hover{
   color: rgb(12, 19, 19);
 }
-
-
 </style>
