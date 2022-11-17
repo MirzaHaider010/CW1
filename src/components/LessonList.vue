@@ -33,13 +33,6 @@
           <tr><h2>Sort by</h2></tr>
           <br/>
 
-          <tr><label><input type="radio" v-on:click="sortSubject(order)" value="subject" v-model="course"> Subject</label></tr>
-          <tr><label><input type="radio" v-on:click="sortLocation" value="location" v-model="course"> Location</label></tr>
-          <tr><label><input type="radio" v-on:click="sortPrice" value="Price" v-model="course"> Price</label></tr>
-          <tr><label><input type="radio" v-on:click="sortAvaiabiity" value="Availability" v-model="course"> Availability</label></tr>
-          <br/><br/>
-          <tr><label><input type="radio" v-on:click="OrderAscending(course)" value="Ascending" v-model="order"> Ascending</label></tr>
-          <tr><label><input type="radio" v-on:click="OrderDescending(course)" value="Descending" v-model="order"> Descending</label></tr>
         </table>
       </div>
       <div class="col-lg-10">
