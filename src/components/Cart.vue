@@ -23,10 +23,7 @@
               <div class="text-align-left">
                 <h3 class="bold">Subject: {{ lesson.subject }}</h3>
                 <h3 class="bold">Location: {{ lesson.location }}</h3>
-                <h3 class="bold">
-                  Price: <span class="bold">&#163;</span>{{ lesson.price }}
-                </h3>
-                <!-- <h3 class="bold">Spaces: {{ lesson.quantity }}</h3> -->
+                <h3 class="bold">Price: <span class="bold">&#163;</span>{{ lesson.price }}</h3>
               </div>
             </div>
             <div class="col-sm-4">
@@ -49,28 +46,7 @@
   <h1 class="make-center">CHECKOUT</h1>
   <br/>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-        <p>Name:
-          <input v-model="name"  />
-        </p>
-      </div>
-      <div class="col-sm-4">
-        <p>Phone:
-          <input v-model="phone"  />
-        </p>
-      </div>
-      <div class="col-sm-4">
-        <button
-            v-on:click="checkout(name, phone)"
-            class="cart__button"
-          >
-            Checkout
-        </button>
-      </div>
-    </div>
-  </div>
+  
   <div class="container">
     <div class="row">
       <div class="col text-center">

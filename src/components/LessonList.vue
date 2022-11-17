@@ -55,17 +55,13 @@
               </div>
               <div class="cart ">
                 <!-- Button to add the lesson in the cart -->
-                <button
-                  v-on:click="addProduct(lesson)"
-                  class="cart__button"
-                >
+                <button v-on:click="addProduct(lesson)" class="cart__button">
                   Add to cart
                 </button>
               </div>
             </div>
           </section>
         </div>
-
       </div>
     </div>
   </div>
@@ -97,7 +93,6 @@ export default {
 
       });
     });
-
     function addProduct(p) {
       let product = { ...p };
       for (let i = 0; i < this.products.length; i++) {
@@ -112,14 +107,7 @@ export default {
           break;
         }
       }
-
     }
-    function checkCart() {
-      console.log(this.total)
-
-
-    }
-
     function sortSubject(value){
       if (value == 'Ascending' )
         this.products.sort((a,b) => a.subject > b.subject ? 1 : -1)
@@ -173,7 +161,6 @@ export default {
       sortAvaiabiity,
       OrderAscending,
       OrderDescending,
-      checkCart,
       searchedProducts,
       searchQuery,
       cart: computed(() => store.getters.getCart),
@@ -184,15 +171,12 @@ export default {
 };
 </script>
 
-
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #app {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
@@ -249,7 +233,6 @@ html {
   margin-top: 30px;
   margin-left: 40px ;
 }
-
 .cart-back {
   margin-top: 10px;
   text-decoration: underline;
@@ -261,7 +244,4 @@ html {
 .small-text{
   font-size: 25px;
 }
-
-
-
 </style>
