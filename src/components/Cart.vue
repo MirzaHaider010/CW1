@@ -4,6 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col text-center">
+        <!-- Shopping cart button to go back to lesson list page -->
         <button class="cart-back" v-on:click="$router.back()">Shopping Cart</button>
       </div>
     </div>
@@ -12,10 +13,11 @@
   <br/>
   <h1 class="make-center">SHOPPING CART</h1>
   <br/><br/>
+  <!-- Check if the cart is empty -->
   <h1 class="make-center" v-if="cart<=0">The cart is empty</h1>
   <br/><br/>
   <section class="lessons">
-      <!-- Information stored in the object -->
+     <!-- Show all the products in the cart -->
       <div v-for="lesson in cart" :key="lesson.id" class="lesson">
         <div class="container">
           <div class="row">
@@ -32,7 +34,7 @@
           </div>
         </div>
         <div class="cart ">
-          <!-- Button to decrement the space counter -->
+          <!-- Button to remove lesson from cart -->
           <button
             v-on:click="removeProduct(lesson.id)"
             class="cart__button"
@@ -48,6 +50,7 @@
   <div class="container">
     <div class="row">
       <div class="col text-center">
+        <!-- Show total price of the products in the cart -->
         <h4>Total price : {{ total }}</h4>
       </div>
     </div>
@@ -87,22 +90,36 @@
     setup() {
       const store = useStore();
 
+      // Function to remove lesson from cart
       function removeProduct(id) {
         store.dispatch("removeProduct", id);
       }
 
+      // Function to checkout the cart
       function checkout(name, phone) {
+
+        // Regex pattern for phone number
         var phonePattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/
+
+        // Regex pattern for name
         var namePattern = /^[A-Za-z ]+$/
+
+        // Check if the cart is empty
         if(this.total == 0){
           alert("The cart is empty")
         }
+
+        // Check if name and phone number is entered
         else if(!(name && phone)){
           alert("Please provide a valid name and phone number")
         }
+
+        // Validate the name with regex name pattern
         else if(!(namePattern.test(name))){
           alert("Please provide a valid format of name e.g spike")
         }
+
+        // Validate the phone with regex phone pattern
         else if(!(phonePattern.test(phone))){
           alert("Please provide a valid format of phone number e.g 1234567890")
         }
@@ -126,8 +143,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-
 #app {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;

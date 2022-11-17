@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col text-center">
+        <!-- Shopping cart button (only enabled when there is an item in the cart) -->
         <router-link to="/cart" custom v-slot="{ navigate }">
           <button class="cart-back" v-on:click="navigate" role="link" v-bind:disabled="cart >= 0">
             Shopping Cart
@@ -12,9 +13,8 @@
   </div>
   <br/>
   <div class="table-padding">
-     <h2>Search:
-      <input class="small-text" v-model="searchQuery" placeholder=" Search by subject or location...">
-    </h2>
+     <!-- Search field to search lesson by subject name or location -->
+     <h2>Search:<input class="small-text" v-model="searchQuery" placeholder=" Search by subject or location..."></h2>
   </div>
   <div id="app">
     <div class="row">
@@ -22,10 +22,11 @@
         <table class="table-padding">
           <tr><h2>Sort by</h2></tr>
           <br/>
+          <!-- Sorting according to subject, location, price or availability (Ascending or Descending) -->
           <tr><label><input type="radio" v-on:click="sortSubject(order)" value="subject" v-model="course"> Subject</label></tr>
-          <tr><label><input type="radio" v-on:click="sortLocation" value="location" v-model="course"> Location</label></tr>
-          <tr><label><input type="radio" v-on:click="sortPrice" value="Price" v-model="course"> Price</label></tr>
-          <tr><label><input type="radio" v-on:click="sortAvaiabiity" value="Availability" v-model="course"> Availability</label></tr>
+          <tr><label><input type="radio" v-on:click="sortLocation(order)" value="location" v-model="course"> Location</label></tr>
+          <tr><label><input type="radio" v-on:click="sortPrice(order)" value="Price" v-model="course"> Price</label></tr>
+          <tr><label><input type="radio" v-on:click="sortAvaiabiity(order)" value="Availability" v-model="course"> Availability</label></tr>
           <br/><br/>
           <tr><label><input type="radio" v-on:click="OrderAscending(course)" value="Ascending" v-model="order"> Ascending</label></tr>
           <tr><label><input type="radio" v-on:click="OrderDescending(course)" value="Descending" v-model="order"> Descending</label></tr>
@@ -34,22 +35,20 @@
       <div class="col-lg-10">
         <div>
           <section class="lessons">
-            <!-- Information stored in the object -->
+            <!-- Show a the lessons stored in the searchedProducts -->
             <div v-for="lesson in searchedProducts" :key="lesson.id" class="lesson">
               <div >
                 <div class="row">
                   <div class="col-sm-8">
                     <div class="text-align-left">
-                      <h3 class="bold">Subject: {{ lesson.subject }}</h3>
-                      <h3 class="bold">Location: {{ lesson.location }}</h3>
-                      <h3 class="bold">
-                        Price: <span class="bold">&#163;</span>{{ lesson.price }}
-                      </h3>
-                      <h3 class="bold">Spaces: {{ lesson.quantity }}</h3>
+                      <h4 class="bold">Subject: {{ lesson.subject }}</h4>
+                      <h4 class="bold">Location: {{ lesson.location }}</h4>
+                      <h4 class="bold">Price: <span class="bold">&#163;</span>{{ lesson.price }}</h4>
+                      <h4 class="bold">Spaces: {{ lesson.quantity }}</h4>
                     </div>
                   </div>
                   <div class="col-sm-4">
-                    <img :src="lesson.url" class="image-padding" width="130" height="130" />
+                    <img :src="lesson.url" class="image-padding" width="110" height="110" />
                   </div>
                 </div>
               </div>
@@ -84,6 +83,8 @@ export default {
   setup() {
     const store = useStore();
     const searchQuery = ref("");
+
+    // Function to search the lesson by name or location
     const searchedProducts = computed(() => {
       return store.getters.getProducts.filter((product) => {
           return (
@@ -93,6 +94,8 @@ export default {
 
       });
     });
+
+    // Function to Add the lesson in the store object
     function addProduct(p) {
       let product = { ...p };
       for (let i = 0; i < this.products.length; i++) {
@@ -108,30 +111,40 @@ export default {
         }
       }
     }
+
+    // Function to sort by subject name
     function sortSubject(value){
       if (value == 'Ascending' )
         this.products.sort((a,b) => a.subject > b.subject ? 1 : -1)
       else
         this.products.sort((a,b) => a.subject < b.subject ? 1 : -1)
     }
+
+    // Function to sort by location
     function sortLocation(value){
       if (value == 'Ascending' )
         this.products.sort((a,b) => a.location > b.location ? 1 : -1)
       else
         this.products.sort((a,b) => a.location < b.location ? 1 : -1)
     }
+
+    // Function to sort by price
     function sortPrice(value){
       if (value == 'Ascending' )
         this.products.sort((a,b) => a.price > b.price ? 1 : -1)
       else
         this.products.sort((a,b) => a.price < b.price ? 1 : -1)
     }
+
+    // Function to sort by subject space
     function sortAvaiabiity(value){
       if (value == 'Ascending' )
         this.products.sort((a,b) => a.quantity > b.quantity ? 1 : -1)
       else
         this.products.sort((a,b) => a.quantity < b.quantity ? 1 : -1)
     }
+
+    // Function to order in ascending
     function OrderAscending(value){
       if (value == 'subject')
         this.sortSubject('Ascending')
@@ -142,6 +155,8 @@ export default {
       else
         this.sortAvaiabiity('Ascending')
     }
+
+    // Function to order in descending
     function OrderDescending(value){
       if (value == 'subject')
         this.sortSubject('Descending')
