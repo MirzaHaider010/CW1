@@ -2,17 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col text-center">
-        <router-link
-          to="/cart"
-          custom
-          v-slot="{ navigate }"
-        >
-          <button
-            class="cart-back"
-            @click="navigate"
-            role="link"
-            v-bind:disabled="cart >= 0"
-          >
+        <router-link to="/cart" custom v-slot="{ navigate }">
+          <button class="cart-back" v-on:click="navigate" role="link" v-bind:disabled="cart >= 0">
             Shopping Cart
           </button>
         </router-link>
@@ -25,7 +16,6 @@
       <input class="small-text" v-model="searchQuery" placeholder=" Search by subject or location...">
     </h2>
   </div>
-
   <div id="app">
     <div class="row">
       <div class="col-lg-2">
