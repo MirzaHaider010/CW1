@@ -23,13 +23,13 @@
           <div class="row">
             <div class="col-sm-8">
               <div class="text-align-left">
-                <h3 class="bold">Subject: {{ lesson.subject }}</h3>
-                <h3 class="bold">Location: {{ lesson.location }}</h3>
-                <h3 class="bold">Price: <span class="bold">&#163;</span>{{ lesson.price }}</h3>
+                <h4 class="bold">Subject: {{ lesson.subject }}</h4>
+                <h4 class="bold">Location: {{ lesson.location }}</h4>
+                <h4 class="bold">Price: <span class="bold">&#163;</span>{{ lesson.price }}</h4>
               </div>
             </div>
             <div class="col-sm-4">
-              <img :src="lesson.url" class="image-padding" width="130" height="130" />
+              <img :src="lesson.url" class="image-padding" width="110" height="110" />
             </div>
           </div>
         </div>

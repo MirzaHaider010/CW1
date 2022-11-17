@@ -247,6 +247,7 @@ html {
 .table-padding{
   margin-top: 30px;
   margin-left: 40px ;
+  font-size: 20px ;
 }
 .cart-back {
   margin-top: 10px;
