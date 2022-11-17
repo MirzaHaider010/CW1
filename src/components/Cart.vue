@@ -45,7 +45,14 @@
   <br/>
   <h1 class="make-center">CHECKOUT</h1>
   <br/>
-
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h4>Total price : {{ total }}</h4>
+      </div>
+    </div>
+  </div>
+  <br/>
   <div class="container">
     <div class="row">
       <div class="col-sm-4">
@@ -58,13 +65,6 @@
         <button v-on:click="checkout(name, phone)" class="cart__button">
             Checkout
         </button>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col text-center">
-        <h4>TOTAL: {{ total }}</h4>
       </div>
     </div>
   </div>
